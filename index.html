@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body, html{
+        margin: 0;
+        background: #000;
+        color: #f00;
+        font-family: courier;
+        min-height: 100vh;
+        font-size: 24px;
+        text-align: center;
+        overflow: hidden;
+      }
+      #playerModal{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+        background: #000810cc;
+      }
+      #title{
+        font-size: 1em;
+        text-shadow: #0f8 0px 0px 20px;
+        color: #fff4;
+        min-width: 500px;
+        position: absolute;
+        left: 50%;
+        transform: scale(2,1) translate(-130px);
+        margin-top:20px;
+        margin-bottom:20px;
+      }
+      .loadButton{
+        border: none;
+        border-radius: 10px;
+        font-family: courier;
+        color: #4ff;
+        background: #133;
+        min-width: 100px;
+        cursor: pointer;
+      }
+      .closeButton{
+        border: none;
+        border-radius: 10px;
+        font-family: courier;
+        color: #f88;
+        margin: 10px;
+        font-size: 1em;
+        cursor: pointer;
+        background: #400;
+        min-width: 100px;
+        position: absolute;
+        z-index: 2000;
+        transform: translate(-50%);
+      }
+      #tiles{
+        margin-top: 100px;
+      }
+      .tile{
+        border: 1px solid #4f83;
+        display: inline-block;
+        margin: 10px;
+        min-height: 100px;
+        padding: 10px;
+      }
+      #playerFrame{
+        position: absolute;
+        display: block;
+        z-index: 1500;
+        border: none;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="title"> whitehot robot covers</div>
+    <div id="title"> whitehot robot covers</div>
+    <div id="title"> whitehot robot covers</div>
+    <div id="title"> whitehot robot covers</div>
+    <div id="title"> whitehot robot covers</div>
+    <div id="title"> whitehot robot covers</div>
+    <div id="playerModal">
+      <button class="closeButton" onclick="hidePlayerModal()">
+        close
+      </button>
+      <iframe id="playerFrame"></iframe>
+    </div>
+    <div id="tiles"></div>
+    <script>
+
+      demoList = [
+        'epiphany_ts',
+        'everything_i_wanted',
+        'exist_for_love',
+        'fade_into_you',
+        'good_girls',
+        'make_me_a_robot',
+        'only_in_my_dreams'
+      ]
+      
+      playerModal = document.querySelector('#playerModal')
+      showPlayerModal = (tgt='') => {
+        playerModal.style.display = 'block'
+        rsz___ = window.onresize = () => {
+          setTimeout(()=>{
+            playerFrame = document.querySelector('#playerFrame')
+            if(document.body.clientWidth > document.body.clientHeight*1.77777778){
+              playerFrame.style.height = '100vh'
+              setTimeout(()=>playerFrame.style.width = playerFrame.clientHeight*1.77777778+'px',0)
+            }else{
+              playerFrame.style.width = '100vw'
+              setTimeout(()=>playerFrame.style.height = playerFrame.clientWidth/1.77777778 + 'px',0)
+            }
+          },0)
+        }
+        rsz___()
+      }
+      hidePlayerModal = tgt => {
+        playerModal.style.display = 'none'
+      }
+      
+      tiles = document.querySelector('#tiles')
+      demoList.map(v => {
+        el = document.createElement('button')
+        el.className = 'loadButton'
+        el.innerHTML = 'launch'
+        el2 = document.createElement('div')
+        el2.className = 'tile'
+        el2.appendChild(el)
+        tiles.appendChild(el2)
+        el.onclick = () => {
+          showPlayerModal(v)
+        }
+      })
+    </script>
+  </body>
+</html>

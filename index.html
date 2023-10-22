@@ -33,6 +33,9 @@
         margin-top:20px;
         margin-bottom:20px;
       }
+      .span{
+        font-size: .8em;
+      }
       .loadButton{
         border: none;
         border-radius: 10px;
@@ -131,9 +134,16 @@
         el.innerHTML = 'launch'
         el2 = document.createElement('div')
         el2.className = 'tile'
+        span = document.createElement('span')
+        span.className = 'span'
+        span.innerHTML = v
+        el2.appendChild(span)
+        br = document.createElement('br')
+        el2.appendChild(br)
         el2.appendChild(el)
         tiles.appendChild(el2)
         el.onclick = () => {
+          
           showPlayerModal(v)
         }
       })

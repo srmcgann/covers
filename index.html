@@ -66,7 +66,8 @@
         border: 1px solid #4f83;
         display: inline-block;
         margin: 10px;
-        min-height: 100px;
+        min-height: 50px;
+        background: #40f2;
         padding: 10px;
       }
       #playerFrame{
@@ -119,6 +120,7 @@
               playerFrame.style.width = '100vw'
               setTimeout(()=>playerFrame.style.height = playerFrame.clientWidth/1.77777778 + 'px',0)
             }
+            playerFrame.src = tgt
           },0)
         }
         rsz___()
